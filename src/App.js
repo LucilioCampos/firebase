@@ -1,19 +1,16 @@
 import React from 'react';
 
-import Header from './components/Header'
-import Login from './components/Login'
-import AuthProvider from './components/AuthProvider'
+import Routes from './routes'
 
 import './global.css'
+
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <AuthProvider>
-        <Login />
-      </AuthProvider>
-      
+      <Routes />
     </div>
   );
 }

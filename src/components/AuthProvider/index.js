@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 
 import * as auth from '../../utils/auth'
 
@@ -11,33 +10,33 @@ export const withAuthContext = Component => props => (
   </AuthContext.Consumer>
 )
 
-class AuthProvider extends Component {
-  state = {
-    isLoggedIn: false,
-    isAdmin: false,
-    user: {}
-  }
+const AuthProvider = props => {
 
-  async componentWillMount() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
     const token = auth.getToken()
     if (token) {
-      this.setState({ isLoggedIn: true })
+      setIsLoggedIn(true)
       console.log(token)
     }
+  }, [isLoggedIn])
+
+
+
+  const { children } = props
+  const value = {
+    isLoggedIn,
+    setIsLoggedIn
   }
 
-  render() {
-    const { children } = this.props
 
-    const value = {
-      ...this.state
-    }
-    return (
-      <>
-        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-      </>
-    )
-  }
+  
+  return (
+    <>
+      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    </>
+  )
 }
 
 export default (AuthProvider)

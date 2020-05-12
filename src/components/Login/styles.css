@@ -13,7 +13,6 @@
     max-width: 400px;
     margin-top: 20vh;
     box-shadow: 1px 6px 9px rgba(85, 82, 88, 0.7);
-   
 }
 
 .login-wrapper form {
@@ -23,12 +22,13 @@
 
 
 .login-wrapper form input {
-    padding: 20px;
+    padding: 10px 10px;
     margin-bottom: 30px;
     outline: none;
     border: none 0;
     border-bottom: 1px groove rgba(85, 82, 88, 0.226);
-
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .login-wrapper form button {
